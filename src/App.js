@@ -11,8 +11,17 @@ function App() {
       <Sidebar/>
 
       <Routes>
-        <Route path='/staff' element={<Staff/>}/>
-        <Route path='/department' element={<Department/>}/>
+      <Route path="/home" element={<Home />} />
+          <Route path="/staff" element={<Staff />} />
+          <Route path="/department" element={<Department />} />
+          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/report" element={<Report />} />
+          <Route path="/config" element={<Config />} />
+
+          {/* <Route path="/admin" element={<PrivateRoute role="Admin" />}>
+            <Route path="/admin" element={<Admin />} />
+          </Route> */}
+          
       </Routes>
     </>
   );

@@ -44,3 +44,18 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Install Neccessary Dependencies
+npm i react-router-dom styled-components react-bootstrap react-icons --save airtable airtable-plus
+
+## Configure Airtable Base ID, API Key
+Configure at each table as the code the below:
+const AirtablePlus = require("airtable-plus");
+const Account = new AirtablePlus({
+    baseID: "app...",
+    apiKey: "keyID...",
+    tableName: "Account"
+});
+
+## baseID: get from airtable.com url which start with app...
+## API Key: on airtable.com, goto Account settings, get key here...
