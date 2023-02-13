@@ -52,7 +52,8 @@ function Sidebar() {
                 Settings
               </a>
 
-              <button onClick={handleLogout} className="dropdown-item">
+              {/* <button onClick={handleLogout} className="dropdown-item"> */}
+              <button className="dropdown-item">
                 Logout
               </button>
             </div>
@@ -159,7 +160,8 @@ function Sidebar() {
                   Settings
                 </a>
 
-                <button onClick={handleLogout} className="dropdown-item">
+                {/* <button onClick={handleLogout} className="dropdown-item"> */}
+                <button className="dropdown-item">
                   Logout
                 </button>
               </div>

@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
+import Home from './components/main/Home';
 import Staff from './components/main/Staff';
 import Department from './components/main/Department';
 import Sidebar from './components/common/Sidebar';
+import Report from './components/main/Report';
+import Config from './components/main/Config';
 
 function App() {
   return (
@@ -11,7 +14,7 @@ function App() {
       <Sidebar/>
 
       <Routes>
-      <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/staff" element={<Staff />} />
           <Route path="/department" element={<Department />} />
           {/* <Route path="/login" element={<Login />} /> */}
