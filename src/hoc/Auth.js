@@ -15,8 +15,9 @@ function Auth({ children }) {
   useEffect(() => {
     if (localUser) {
       dispatch(setUser(JSON.parse(localUser)));
-      navigate("/staff");
+      navigate("/home");
     }
+    // eslint-disable-next-line
   }, []);
 
   return <>{user ? children : <Login />}</>;

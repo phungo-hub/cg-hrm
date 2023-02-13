@@ -36,7 +36,7 @@ function Login() {
 
       if (result.length > 0) resultFields = result && result[0].fields;
       const verify =
-        result.length > 0 && resultFields.password == account.password;
+        result.length > 0 && resultFields.password === account.password[0];
 
       if (verify) {
         dispatch(setLoading(false));
