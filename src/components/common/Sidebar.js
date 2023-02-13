@@ -9,8 +9,17 @@ import {
 } from "react-icons/fc";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../../features/userSlice";
+import { removeLocalUser } from "../../services/local-storage.service";
 
 function Sidebar() {
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(removeUser());
+    removeLocalUser();
+  };
+
   return (
     <nav
       className="navbar navbar-vertical fixed-left navbar-expand-md navbar-light"
@@ -52,8 +61,7 @@ function Sidebar() {
                 Settings
               </a>
 
-              {/* <button onClick={handleLogout} className="dropdown-item"> */}
-              <button className="dropdown-item">
+              <button onClick={handleLogout} className="dropdown-item">
                 Logout
               </button>
             </div>
@@ -160,8 +168,7 @@ function Sidebar() {
                   Settings
                 </a>
 
-                {/* <button onClick={handleLogout} className="dropdown-item"> */}
-                <button className="dropdown-item">
+                <button onClick={handleLogout} className="dropdown-item">
                   Logout
                 </button>
               </div>
