@@ -1,467 +1,219 @@
-import React from "react";
+import React, { useState } from "react";
+import styled from "styled-components";
+import Modal from "./Modal";
 import Search from "./Search";
+import PropTypes from "prop-types";
+import DropdownSort from "./DropdownSort";
 
-function Table() {
+function Table({ list, departmentList, statusList }) {
+  const [isModalOpened, setIsModalOpened] = useState(false);
+  const [editingValue, setEditingValue] = useState(null);
+  const handleOpenEdit = (item) => {
+    setIsModalOpened(true);
+    setEditingValue(item);
+  };
+  const handleCloseEdit = () => {
+    setIsModalOpened(false);
+  };
+  const handleSelect = (value, name) => {
+    setEditingValue({ ...editingValue, [name]: value[0].title });
+  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
+  const indexOfLastItem = currentPage * itemsPerPage; // 1 * 5 = 5
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage; // 5 - 5 = 0
+  const currentItems = list?.slice(indexOfFirstItem, indexOfLastItem); //depent on first/last page, current list will difference
+  const pageNumbers = [];
+
+  const handlePageNumbers = () => {
+    for (let i = 1; i <= Math.ceil(list?.length / itemsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  };
+  const handleClickPage = (e) => {
+    setCurrentPage(e.target.id);
+  };
+  const handlePrevious = () => {
+    if (currentPage > Math.min(...pageNumbers)) setCurrentPage(currentPage - 1);
+  };
+  const handleNext = () => {
+    if (currentPage < Math.max(...pageNumbers)) setCurrentPage(currentPage + 1);
+  };
+  const renderPageNumbers = handlePageNumbers().map((number) => {
+    return (
+      <li onClick={handleClickPage} className="page-item page-link" id={number}>
+        {number}
+      </li>
+    );
+  });
+  const handleDropdownSort = (value) => {
+    // check option value, if value = 1 => sort list by ID descending
+    // continue for case -1, 0
+    switch (value) {
+      case -1:
+        break;
+      case 0:
+        break;
+      case 1:
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
-      <Search />
-
-      <div
-        className="table-responsive mb-0"
-        data-list='{"valueNames": ["goal-project", "goal-status", "goal-progress", "goal-date"]}'
-      >
-        <table className="table table-sm table-nowrap card-table">
-          <thead>
-            <tr>
-              <th>
-                <a
-                  href="#"
-                  className="text-muted list-sort"
-                  data-sort="goal-project"
-                >
-                  Công việc
-                </a>
-              </th>
-              <th>
-                <a
-                  href="#"
-                  className="text-muted list-sort"
-                  data-sort="goal-status"
-                >
-                  Trạng thái
-                </a>
-              </th>
-              <th>
-                <a
-                  href="#"
-                  className="text-muted list-sort"
-                  data-sort="goal-progress"
-                >
-                  Tiến độ
-                </a>
-              </th>
-              <th>
-                <a
-                  href="#"
-                  className="text-muted list-sort"
-                  data-sort="goal-date"
-                >
-                  Hết hạn
-                </a>
-              </th>
-              <th className="text-right">Đội nhóm</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody className="list">
-            <tr>
-              <td className="goal-project">Cập nhật API</td>
-              <td className="goal-status">
-                <span className="text-warning">●</span> Đang làm
-              </td>
-              <td className="goal-progress">55%</td>
-              <td className="goal-date">
-                <time dateTime="2018-10-24">07/24/18</time>
-              </td>
-              <td className="text-right">
-                <div className="avatar-group">
-                  <a
-                    href="profile-posts.html"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Dianna Smiley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-1.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="profile-posts.html"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Ab Hadley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-2.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="profile-posts.html"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Adolfo Hess"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-3.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="profile-posts.html"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Daniela Dewitt"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-4.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                </div>
-              </td>
-              <td className="text-right">
-                <div className="dropdown">
-                  <a
-                    href="#"
-                    className="dropdown-ellipses dropdown-toggle"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fe fe-more-vertical"></i>
-                  </a>
-                  <div className="dropdown-menu dropdown-menu-right">
-                    <a href="#!" className="dropdown-item">
-                      Action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Another action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="goal-project">Release v1.2-Beta</td>
-              <td className="goal-status">
-                <span className="text-warning">●</span> In progress
-              </td>
-              <td className="goal-progress">25%</td>
-              <td className="goal-date">
-                <time dateTime="2018-10-24">08/26/18</time>
-              </td>
-              <td className="text-right">
-                <div className="avatar-group justify-content-end">
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Dianna Smiley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-1.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Ab Hadley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-2.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Adolfo Hess"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-3.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                </div>
-              </td>
-              <td className="text-right">
-                <div className="dropdown">
-                  <a
-                    href="#"
-                    className="dropdown-ellipses dropdown-toggle"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fe fe-more-vertical"></i>
-                  </a>
-                  <div className="dropdown-menu dropdown-menu-right">
-                    <a href="#!" className="dropdown-item">
-                      Action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Another action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="goal-project">GDPR Compliance</td>
-              <td className="goal-status">
-                <span className="text-success">●</span> Completed
-              </td>
-              <td className="goal-progress">100%</td>
-              <td className="goal-date">
-                <time dateTime="2018-10-24">06/19/18</time>
-              </td>
-              <td className="text-right">
-                <div className="avatar-group justify-content-end">
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Dianna Smiley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-1.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Ab Hadley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-2.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Adolfo Hess"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-3.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                </div>
-              </td>
-              <td className="text-right">
-                <div className="dropdown">
-                  <a
-                    href="#"
-                    className="dropdown-ellipses dropdown-toggle"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fe fe-more-vertical"></i>
-                  </a>
-                  <div className="dropdown-menu dropdown-menu-right">
-                    <a href="#!" className="dropdown-item">
-                      Action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Another action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="goal-project">v1.2 Documentation</td>
-              <td className="goal-status">
-                <span className="text-danger">●</span> Cancelled
-              </td>
-              <td className="goal-progress">0%</td>
-              <td className="goal-date">
-                <time dateTime="2018-10-24">06/25/18</time>
-              </td>
-              <td className="text-right">
-                <div className="avatar-group justify-content-end">
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Dianna Smiley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-1.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Ab Hadley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-2.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                </div>
-              </td>
-              <td className="text-right">
-                <div className="dropdown">
-                  <a
-                    href="#"
-                    className="dropdown-ellipses dropdown-toggle"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <span className="fe fe-more-vertical"></span>
-                  </a>
-                  <div className="dropdown-menu dropdown-menu-right">
-                    <a href="#!" className="dropdown-item">
-                      Action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Another action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="goal-project">Plan design offsite</td>
-              <td className="goal-status">
-                <span className="text-success">●</span> Completed
-              </td>
-              <td className="goal-progress">100%</td>
-              <td className="goal-date">
-                <time dateTime="2018-10-24">06/30/18</time>
-              </td>
-              <td className="text-right">
-                <div className="avatar-group justify-content-end">
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Dianna Smiley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-1.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Ab Hadley"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-2.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Adolfo Hess"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-3.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                  <a
-                    href="#!"
-                    className="avatar avatar-xs"
-                    data-toggle="tooltip"
-                    title=""
-                    data-original-title="Daniela Dewitt"
-                  >
-                    <img
-                      src="assets/img/avatars/profiles/avatar-4.jpg"
-                      className="avatar-img rounded-circle"
-                      alt="..."
-                    />
-                  </a>
-                </div>
-              </td>
-              <td className="text-right">
-                <div className="dropdown">
-                  <a
-                    href="#"
-                    className="dropdown-ellipses dropdown-toggle"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fe fe-more-vertical"></i>
-                  </a>
-                  <div className="dropdown-menu dropdown-menu-right">
-                    <a href="#!" className="dropdown-item">
-                      Action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Another action
-                    </a>
-                    <a href="#!" className="dropdown-item">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <Modal
+        departmentList={departmentList}
+        statusList={statusList}
+        isModalOpened={isModalOpened}
+        handleCloseModal={handleCloseEdit}
+        title="Sửa nhân sự"
+        editingValue={editingValue}
+        type="edit"
+      />
+      <div className="card mt-3">
+        <div className="card-header">
+          <div className="row align-items-center">
+            <div className="col">
+              <Search onFilter={() => {}} />
+            </div>
+            <DropdownSort handleDropdownSort={handleDropdownSort} />{" "}
+          </div>
+        </div>
       </div>
+
+      <TableWrapper>
+        <div className="card">
+          <div
+            className="table-responsive mb-0"
+            data-list='{"valueNames": ["goal-project", "goal-status", "goal-progress", "goal-date"]}'
+          >
+            <table className="table table-sm table-nowrap card-table">
+              <thead>
+                <tr>
+                  <th>
+                    <a href="/" className="text-muted list-sort">
+                      Mã nhân sự
+                    </a>
+                  </th>
+                  <th>
+                    <a href="/" className="text-muted list-sort">
+                      Tên nhân sự
+                    </a>
+                  </th>
+                  <th>
+                    <a href="/" className="text-muted list-sort">
+                      Ngày sinh
+                    </a>
+                  </th>
+                  <th>
+                    <a href="/" className="text-muted list-sort">
+                      Giới tính
+                    </a>
+                  </th>
+                  <th>
+                    <a href="/" className="text-muted list-sort">
+                      Phòng ban
+                    </a>
+                  </th>
+                  <th>
+                    <a href="/" className="text-muted list-sort">
+                      Số điện thoại
+                    </a>
+                  </th>
+                  <th>
+                    <a href="/" className="text-muted list-sort">
+                      Trạng thái
+                    </a>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="list">
+                {currentItems &&
+                  currentItems.map((item) => (
+                    <tr
+                      className="item-row"
+                      key={item.fields.id}
+                      onClick={() => {
+                        handleOpenEdit(item);
+                      }}
+                    >
+                      <td>
+                        <span>{item.fields.id}</span>
+                      </td>
+                      <td>
+                        <span>{item.fields.full_name}</span>
+                      </td>
+                      <td>
+                        <span>{item.fields.dob}</span>
+                      </td>
+                      <td>
+                        <span>{item.fields.gender}</span>
+                      </td>
+                      <td>
+                        {item.fields.department_name &&
+                          item.fields.department_name.map((item) => (
+                            <span key={item}>{item}</span>
+                          ))}
+                      </td>
+                      <td>
+                        <span>{item.fields.phone}</span>
+                      </td>
+                      <td>
+                        {item.fields.status_name &&
+                          item.fields.status_name.map((item) => (
+                            <span key={item}>{item}</span>
+                          ))}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </TableWrapper>
+      <PaginationWrapper>
+        <nav aria-label="Page navigation example">
+          <ul className="pagination">
+            <li className="page-item">
+              <a className="page-link" onClick={handlePrevious}>
+                Trước
+              </a>
+            </li>
+            {renderPageNumbers}
+            <li className="page-item">
+              <a className="page-link" onClick={handleNext}>
+                Sau
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </PaginationWrapper>
     </>
   );
 }
+
+// Default Props if not pass props
+Table.defaultProps = {
+  list: [],
+};
+
+// Type of Default Props when passing
+Table.propTypes = {
+  list: PropTypes.array,
+};
+
+export const TableWrapper = styled.div`
+  *:hover {
+    cursor: pointer;
+  }
+`;
+
+export const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 export default Table;

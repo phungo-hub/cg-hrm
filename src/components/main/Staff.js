@@ -1,8 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../common/Navbar";
 import Table from "../common/Table";
+import { retrieveData } from "../../services/airtable.service";
+import { tableConfig } from "../../utils/airtable";
+import Modal from "../common/Modal";
+import { useSelector } from "react-redux";
+import { selectSuccess } from "../../features/staffSlice";
+import Loading from "../common/Loading";
 
 function Staff() {
+  const [staffList, setStaffList] = useState([]);
+  const [departmentList, setDepartmentList] = useState([]);
+  const [statusList, setStatusList] = useState([]);
+  const [isModalOpened, setIsModalOpened] = useState(false);
+  const staffConfig = tableConfig("staff");
+  const departmentConfig = tableConfig("department");
+  const statusConfig = tableConfig("status");
+  const success = useSelector(selectSuccess);
+  const fetchStaffData = async () => {
+    retrieveData({}, "staff", staffConfig).then((result) => {
+      setStaffList(result);
+    });
+  };
+  const fetchDepartmentData = async () => {
+    retrieveData({}, "department", departmentConfig).then((result) => {
+      setDepartmentList(result);
+    });
+  };
+  const fetchStatusData = async () => {
+    retrieveData({}, "status", statusConfig).then((result) => {
+      setStatusList(result);
+    });
+  };
+  useEffect(() => {
+    fetchStaffData();
+    fetchDepartmentData();
+    fetchStatusData();
+  }, [success]);
+
+  const handleOpenModal = () => {
+    setIsModalOpened(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpened(false);
+  };
+
   return (
     <div className="main-content">
       <Navbar />
@@ -12,17 +55,33 @@ function Staff() {
           <div className="col-12 col-lg-6 col-xl">
             <span>Tổng 20 nhân sự</span>
           </div>
-
           <div className="col-auto">
-            <button className="btn btn-danger">Thêm nhân sự</button>
+            <Modal
+              isModalOpened={isModalOpened}
+              handleCloseModal={handleCloseModal}
+              departmentList={departmentList}
+              statusList={statusList}
+              title="Thêm nhân sự"
+              type="create"
+            />
+            {/* Tạo common component button */}
+            <button className="btn btn-danger" onClick={handleOpenModal}>
+              Thêm mới
+            </button>
           </div>
         </div>
 
         <div className="row">
           <div className="col-12">
-            <div className="card">
-              <Table />
-            </div>
+            {staffList ? (
+              <Table
+                list={staffList}
+                departmentList={departmentList}
+                statusList={statusList}
+              />
+            ) : (
+              <Loading />
+            )}
           </div>
         </div>
 
