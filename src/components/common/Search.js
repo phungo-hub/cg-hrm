@@ -7,7 +7,7 @@ function Search() {
         <input
           type="search"
           className="form-control form-control-prepended list-search"
-          placeholder="Search"
+          placeholder="Tìm kiếm"
         />
 
         <div className="input-group-prepend">

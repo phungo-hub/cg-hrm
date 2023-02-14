@@ -30,10 +30,10 @@ function Staff() {
           <div className="col-12 col-xl-5">
             <div className="card card-fill">
               <div className="card-header">
-                <h4 className="card-header-title">Recent Activity</h4>
+                <h4 className="card-header-title">Hoạt động gần đầy</h4>
 
                 <a className="small" href="#!">
-                  View all
+                  Xem tất cả
                 </a>
               </div>
               <div className="card-body">
@@ -50,13 +50,13 @@ function Staff() {
                         </div>
                       </div>
                       <div className="col ml-n2">
-                        <h5 className="mb-1">Dianna Smiley</h5>
+                        <h5 className="mb-1">Dung Nguyễn</h5>
 
                         <p className="small text-gray-700 mb-0">
-                          Uploaded the files "Launchday Logo" and "New Design".
+                          Đã tải lên các file "CG Logo" và "Thiết kế mới".
                         </p>
 
-                        <small className="text-muted">2m ago</small>
+                        <small className="text-muted">2 phút trước</small>
                       </div>
                     </div>
                   </div>
@@ -72,13 +72,14 @@ function Staff() {
                         </div>
                       </div>
                       <div className="col ml-n2">
-                        <h5 className="mb-1">Ab Hadley</h5>
+                        <h5 className="mb-1">An Nguyễn</h5>
 
                         <p className="small text-gray-700 mb-0">
-                          Shared the "Why Dashkit?" post with 124 subscribers.
+                          Đã chia sẻ bài viết "Tại sao dùng Dashkit?" với 124
+                          người đã đăng ký.
                         </p>
 
-                        <small className="text-muted">1h ago</small>
+                        <small className="text-muted">1 giờ trước</small>
                       </div>
                     </div>
                   </div>
@@ -94,13 +95,14 @@ function Staff() {
                         </div>
                       </div>
                       <div className="col ml-n2">
-                        <h5 className="mb-1">Adolfo Hess</h5>
+                        <h5 className="mb-1">Hùng Lê</h5>
 
                         <p className="small text-gray-700 mb-0">
-                          Exported sales data from Launchday's subscriber data.
+                          Đã xuất các dữ liệu bán hàng từ dữ liệu của người đăng
+                          ký tên Lan
                         </p>
 
-                        <small className="text-muted">3h ago</small>
+                        <small className="text-muted">3 giờ trước</small>
                       </div>
                     </div>
                   </div>
@@ -111,9 +113,9 @@ function Staff() {
           <div className="col-12 col-xl-7">
             <div className="card">
               <div className="card-header">
-                <h4 className="card-header-title">Scratchpad Checklist</h4>
+                <h4 className="card-header-title">Danh sách các đầu việc</h4>
 
-                <span className="badge badge-soft-secondary">23 Archived</span>
+                <span className="badge badge-soft-secondary">23 công việc</span>
               </div>
               <div className="card-body">
                 <div className="checklist">
@@ -128,7 +130,7 @@ function Staff() {
                       htmlFor="checklistOne"
                     ></label>
                     <span className="custom-control-caption">
-                      Delete the old mess in functions files.
+                      Xóa các tin nhắn cũ trong các tập tin chức năng giao diện.
                     </span>
                   </div>
                   <div className="custom-control custom-checkbox checklist-control">
@@ -142,7 +144,8 @@ function Staff() {
                       htmlFor="checklistTwo"
                     ></label>
                     <span className="custom-control-caption">
-                      Refactor the core social sharing modules
+                      Tái cấu trúc các mô đun cốt lõi đã chia sẻ trên mạng xã
+                      hội.
                     </span>
                   </div>
                   <div className="custom-control custom-checkbox checklist-control">
@@ -156,8 +159,8 @@ function Staff() {
                       htmlFor="checklistThree"
                     ></label>
                     <span className="custom-control-caption">
-                      Create the release notes for the new pages so customers
-                      get psyched.
+                      Tạo bản phát hành các ghi chú cho các trang mới để khách
+                      hàng có thể được nhắc nhở tốt hơn.
                     </span>
                   </div>
                   <div className="custom-control custom-checkbox checklist-control">
@@ -171,7 +174,7 @@ function Staff() {
                       htmlFor="checklistFour"
                     ></label>
                     <span className="custom-control-caption">
-                      Send Dianna those meeting notes
+                      Gửi thông tin các buổi họp cho Đan Nguyễn
                     </span>
                   </div>
                   <div className="custom-control custom-checkbox checklist-control">
@@ -185,7 +188,7 @@ function Staff() {
                       htmlFor="checklistFive"
                     ></label>
                     <span className="custom-control-caption">
-                      Share the documentation for the new unified API
+                      Chia sẻ tài liệu của các API mới được phát triển
                     </span>
                   </div>
                   <div className="custom-control custom-checkbox checklist-control">
@@ -200,8 +203,8 @@ function Staff() {
                       htmlFor="checklistSix"
                     ></label>
                     <span className="custom-control-caption">
-                      Clean up the Figma file with all of the avatars, buttons,
-                      and other components.
+                      Dọn dẹp các tập tin Figma với tất cả các ảnh đại diện, nút
+                      bấm, và các thành phần khác.
                     </span>
                   </div>
                 </div>
@@ -213,11 +216,11 @@ function Staff() {
                       className="form-control form-control-flush form-control-auto"
                       data-toggle="autosize"
                       rows="1"
-                      placeholder="Create a task"
+                      placeholder="Tạo một công việc"
                     ></textarea>
                   </div>
                   <div className="col-auto">
-                    <button className="btn btn-sm btn-primary">Add</button>
+                    <button className="btn btn-sm btn-primary">Thêm</button>
                   </div>
                 </div>
               </div>

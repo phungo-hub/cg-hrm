@@ -13,9 +13,9 @@ function Home() {
               <div className="card-adjust-xl">
                 <div className="card">
                   <div className="card-header">
-                    <h4 className="card-header-title">Recent Activity</h4>
+                    <h4 className="card-header-title">Hoạt động gần đầy</h4>
                     <a className="small" href="#!">
-                      View all
+                      Xem tất cả
                     </a>
                   </div>
                   <div className="card-body">
@@ -33,10 +33,10 @@ function Home() {
                           </div>
                           <div className="col ml-n2">
                             <div className="small">
-                              <strong>Dianna Smiley</strong> shared your post
-                              with Ab Hadley, Adolfo Hess, and 3 others.
+                              <strong>Tèo Nguyễn</strong> đã chia sẻ bài đăng
+                              của bạn với Tý Lê, Dần Trần, và 3 người khác.
                             </div>
-                            <small className="text-muted">2m ago</small>
+                            <small className="text-muted">2 phút trước</small>
                           </div>
                         </div>
                       </div>
@@ -53,11 +53,11 @@ function Home() {
                           </div>
                           <div className="col ml-n2">
                             <div className="small">
-                              <strong>Ab Hadley</strong> reacted to your post
-                              with a 😍
+                              <strong>Tý Lê</strong> tương tác vào bài viết của
+                              bạn với biểu cảm 😍
                             </div>
 
-                            <small className="text-muted">2m ago</small>
+                            <small className="text-muted">2 phút trước</small>
                           </div>
                         </div>
                       </div>
@@ -74,15 +74,15 @@ function Home() {
                           </div>
                           <div className="col ml-n2">
                             <div className="small">
-                              <strong>Adolfo Hess</strong> commented
+                              <strong>Dần Trần</strong> đã bình luận
                               <blockquote className="mb-0">
-                                “I don’t think this really makes sense to do
-                                without approval from Johnathan since he’s the
-                                one...”
+                                “Tôi không nghĩ rằng điều này thực sự có ý nghĩa
+                                nếu không có sự chấp thuận của Mẹo Nguyễn vì anh
+                                ấy là người...”
                               </blockquote>
                             </div>
 
-                            <small className="text-muted">2m ago</small>
+                            <small className="text-muted">2 phút trước</small>
                           </div>
                         </div>
                       </div>
@@ -99,10 +99,10 @@ function Home() {
                           </div>
                           <div className="col ml-n2">
                             <div className="small">
-                              <strong>Daniela Dewitt</strong> subscribed to you.
+                              <strong>Thìn Lê</strong> đăng ký theo dõi bạn.
                             </div>
 
-                            <small className="text-muted">2m ago</small>
+                            <small className="text-muted">2 phút trước</small>
                           </div>
                         </div>
                       </div>
@@ -119,11 +119,11 @@ function Home() {
                           </div>
                           <div className="col ml-n2">
                             <div className="small">
-                              <strong>Miyah Myles</strong> shared your post with
-                              Ryu Duke, Glen Rouse, and 3 others.
+                              <strong>Ngọ Văn</strong> đã chia sẻ bài đăng của
+                              bạn với Tý Lê, Dần Trần, và 3 người khác.
                             </div>
 
-                            <small className="text-muted">2m ago</small>
+                            <small className="text-muted">2 phút trước</small>
                           </div>
                         </div>
                       </div>
@@ -140,11 +140,11 @@ function Home() {
                           </div>
                           <div className="col ml-n2">
                             <div className="small">
-                              <strong>Ryu Duke</strong> reacted to your post
-                              with a 😍
+                              <strong>Mùi Đinh</strong> tương tác vào bài viết
+                              của bạn với biểu cảm 😍
                             </div>
 
-                            <small className="text-muted">2m ago</small>
+                            <small className="text-muted">2 phút trước</small>
                           </div>
                         </div>
                       </div>
@@ -156,9 +156,9 @@ function Home() {
             <div className="col-12 col-xl-8">
               <div className="card">
                 <div className="card-header">
-                  <h4 className="card-header-title">Best Selling Products</h4>
+                  <h4 className="card-header-title">Sản phẩm bán chạy nhất</h4>
                   <a href="#!" className="btn btn-sm btn-white">
-                    Export
+                    Xuất tập tin
                   </a>
                 </div>
                 <div
@@ -175,7 +175,7 @@ function Home() {
                             className="text-muted list-sort"
                             data-sort="products-product"
                           >
-                            Product
+                            Sản phẩm
                           </a>
                         </th>
                         <th>
@@ -184,7 +184,7 @@ function Home() {
                             className="text-muted list-sort"
                             data-sort="products-stock"
                           >
-                            Stock
+                            Trạng thái
                           </a>
                         </th>
                         <th>
@@ -193,7 +193,7 @@ function Home() {
                             className="text-muted list-sort"
                             data-sort="products-price"
                           >
-                            Price
+                            Giá cả
                           </a>
                         </th>
                         <th colSpan="2">
@@ -202,7 +202,7 @@ function Home() {
                             className="text-muted list-sort"
                             data-sort="products-sales"
                           >
-                            Monthly Sales
+                            Tổng tiền
                           </a>
                         </th>
                       </tr>

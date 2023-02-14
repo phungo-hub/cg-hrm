@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 function Card() {
   return (
@@ -7,7 +7,7 @@ function Card() {
         <div className="card-body">
           <div className="row align-items-center">
             <div className="col">
-              <h6 className="text-uppercase text-muted mb-2">Value</h6>
+              <h6 className="text-uppercase text-muted mb-2">Giá trị</h6>
               <span className="h2 mb-0">$24,500</span>
             </div>
             <div className="col-auto">
@@ -17,7 +17,7 @@ function Card() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Card
+export default Card;

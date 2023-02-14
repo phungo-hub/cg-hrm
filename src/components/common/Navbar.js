@@ -9,8 +9,8 @@ function Navbar() {
         <div className="header-body">
           <div className="row align-items-center">
             <div className="col">
-              <h6 className="header-pretitle">Overview</h6>
-              <h1 className="header-title">Dashboard</h1>
+              <h6 className="header-pretitle">Tổng quan</h6>
+              <h1 className="header-title">Bảng điều khiển</h1>
             </div>
           </div>
           <div className="row align-item-center">
