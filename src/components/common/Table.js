@@ -19,7 +19,7 @@ function Table({ list, departmentList, statusList }) {
     setEditingValue({ ...editingValue, [name]: value[0].title });
   };
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 5;
   const indexOfLastItem = currentPage * itemsPerPage; // 1 * 5 = 5
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; // 5 - 5 = 0
   const currentItems = list?.slice(indexOfFirstItem, indexOfLastItem); //depent on first/last page, current list will difference

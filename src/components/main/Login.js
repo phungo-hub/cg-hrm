@@ -31,7 +31,8 @@ function Login() {
       },
       "account",
       accountTable
-    ).then((result) => {
+    )
+    .then((result) => {
       let resultFields = null;
 
       if (result.length > 0) resultFields = result && result[0].fields;

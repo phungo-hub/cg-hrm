@@ -29,8 +29,8 @@ function Modal({
     dob: new Date(),
     gender: "",
     phone: null,
-    department: "",
-    avatar: "",
+    department: [],
+    avatar: [],
     status: "",
   });
   const dispatch = useDispatch();
@@ -43,9 +43,14 @@ function Modal({
   };
   const handleDatePicker = (value, name) => {
     setStaffData({ ...staffData, [name]: value });
-  };
+  }
   const handleSelect = (value, name) => {
-    setStaffData({ ...staffData, [name]: value[0].title });
+    let nameArr = [];
+    let nameValue = "";
+    name === "gender" ? nameValue = value[0].title : nameArr.push(value[0].id);
+    setStaffData({ ...staffData, 
+        [name] : nameValue || nameArr
+    })
   };
   const handleValidateForm = (data) => {
     // Name length > 2

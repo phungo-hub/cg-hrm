@@ -17,14 +17,17 @@ function Staff() {
   const departmentConfig = tableConfig("department");
   const statusConfig = tableConfig("status");
   const success = useSelector(selectSuccess);
+
   const fetchStaffData = async () => {
     retrieveData({}, "staff", staffConfig).then((result) => {
       setStaffList(result);
+      console.log("staff data: ", result)
     });
   };
   const fetchDepartmentData = async () => {
     retrieveData({}, "department", departmentConfig).then((result) => {
       setDepartmentList(result);
+      console.log();
     });
   };
   const fetchStatusData = async () => {
@@ -53,7 +56,7 @@ function Staff() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 col-lg-6 col-xl">
-            <span>Tổng 20 nhân sự</span>
+            <span>Tổng {staffList.length} nhân sự</span>
           </div>
           <div className="col-auto">
             <Modal
