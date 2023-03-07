@@ -130,6 +130,11 @@ function Login() {
           </form>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <div>username: admin</div>
+      <div>password: 123456</div>
     </div>
   );
 }

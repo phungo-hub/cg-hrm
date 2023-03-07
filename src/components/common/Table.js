@@ -5,7 +5,7 @@ import Search from "./Search";
 import PropTypes from "prop-types";
 import DropdownSort from "./DropdownSort";
 
-function Table({ list, departmentList, statusList }) {
+function Table({ list, departmentList, statusList, handleDropdownSort }) {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [editingValue, setEditingValue] = useState(null);
   const handleOpenEdit = (item) => {
@@ -31,6 +31,8 @@ function Table({ list, departmentList, statusList }) {
     }
     return pageNumbers;
   };
+
+  // const sortDepartmentList = 
   const handleClickPage = (e) => {
     setCurrentPage(e.target.id);
   };
@@ -47,20 +49,7 @@ function Table({ list, departmentList, statusList }) {
       </li>
     );
   });
-  const handleDropdownSort = (value) => {
-    // check option value, if value = 1 => sort list by ID descending
-    // continue for case -1, 0
-    switch (value) {
-      case -1:
-        break;
-      case 0:
-        break;
-      case 1:
-        break;
-      default:
-        break;
-    }
-  };
+  
 
   return (
     <>

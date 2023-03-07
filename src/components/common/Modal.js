@@ -45,13 +45,18 @@ function Modal({
     setStaffData({ ...staffData, [name]: value });
   }
   const handleSelect = (value, name) => {
-    let nameArr = [];
-    let nameValue = "";
-    name === "gender" ? nameValue = value[0].title : nameArr.push(value[0].id);
     setStaffData({ ...staffData, 
-        [name] : nameValue || nameArr
+        [name] : [value[0].id]
     })
   };
+
+  const handleGenderSelect = (value, name) => {
+    setStaffData({
+      ...staffData,
+      [name]: value[0].title
+    })
+  }
+
   const handleValidateForm = (data) => {
     // Name length > 2
     const errMsg = {};
@@ -165,7 +170,7 @@ function Modal({
                   valueField="id"
                   name="gender"
                   onChange={(value) => {
-                    handleSelect(value, "gender");
+                    handleGenderSelect(value, "gender");
                   }}
                 />
               </div>

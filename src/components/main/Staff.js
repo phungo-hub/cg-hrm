@@ -49,6 +49,29 @@ function Staff() {
     setIsModalOpened(false);
   };
 
+  const handleDropdownSort = (value) => {
+    // check option value, if value = 1 => sort list by ID descending
+    // continue for case -1, 0
+    const sortedIdList = staffList.slice();
+    switch (value) {
+      case -1:
+        break;
+      case 0:
+        sortedIdList.sort((a, b) => a.fields.id > b.fields.id ? -1 : 1)
+        setStaffList(sortedIdList)
+        console.log("List: ",sortedIdList)
+        // list = sortedIdList;
+        break;
+      case 1:
+        sortedIdList.sort((a, b) => a.fields.id < b.fields.id ? -1 : 1)
+        setStaffList(sortedIdList)
+        // list = sortedIdList;
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="main-content">
       <Navbar />
@@ -81,6 +104,7 @@ function Staff() {
                 list={staffList}
                 departmentList={departmentList}
                 statusList={statusList}
+                handleDropdownSort={handleDropdownSort}
               />
             ) : (
               <Loading />
